@@ -15,7 +15,7 @@ library(rmarkdown)
   
 <br><br>
 
->I love [R markdown](https://rmarkdown.rstudio.com) and use it on a daily basis for my analysis. This post provides a few tips I use to improve the appearance of my output documents. In any case, the bible is the [Rstudio documentation](https://rmarkdown.rstudio.com/html_document_format.html).
+> [R markdown](https://rmarkdown.rstudio.com) creates interactive reports from R code. This post provides a few tips to improve the appearance of output documents. In any case, the bible is the [Rstudio documentation](https://rmarkdown.rstudio.com/html_document_format.html).
 
 
 
@@ -29,6 +29,16 @@ Here is the code I used to make this paragraph:
 R markdown allows to easily format your text. You can add [links](www.r-graph-gallery.com), write in **bold** or *italic*. This is very well explained in the [Rstudio cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf).
 ```
 
+
+
+# Horizontal lines
+***
+Add an horizontal line by adding 3 stars:
+```{r, eval=FALSE}
+***
+```
+
+***
 
 
 
@@ -75,9 +85,17 @@ A seconde sentence
 
 # Center an image
 ***
-<div align="center">
-![Figure: this is an awesome figure](logo_r_graph_gallery.jpg)
-</div>
+To center an image, use this code:
+```{r eval=FALSE}
+<center>
+![FigName](logo_r_graph_gallery.jpg)
+</center>
+```
+
+Here is the result
+<center>
+![FigName](logo_r_graph_gallery.jpg)
+</center>
 
 
 
@@ -127,14 +145,14 @@ Your footer should now look like this:
 
 # Add space before title
 ***
-I find it pleasant to have a bit of space before starting a new chapter. You can use a `<br>` before each header. A more convenient way is to add some padding in your CSS. Create a `style.css` file:
+I find it pleasant to have a bit of space before starting a new chapter. You can use a `<br>` before each header. A more convenient way is to add some margin in your CSS. Create a `style.css` file:
 ```{r, eval=FALSE}
 h1, .h1, h2, .h2, h3, .h3 {
     margin-top: 84px;
 }
 ```
 
-A document that takes into account this `.css` file:
+A `rmd` document that takes into account this `.css` file:
 ```{r, eval=FALSE}
 ---
 title: "A document with a CSS included"
@@ -153,6 +171,8 @@ content of part 1
 
 content of part 2
 ```
+
+The document you are reading uses this `css`. See the separation between chapters.
 
 
 
@@ -299,6 +319,10 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </div>
 
 
+# Cache code
+Possible to cache code.
+But better to use it with care. Personnaly use it at the end, just to make the document pretty.
+
 # Add a github link in the corner of your document
 ***
 Several solutions exist. I used the code provided in [this repo](https://github.com/tholman/github-corners). Made by [Tim Holman](http://tholman.com). Just paste the provided code in your `header.html`, like you have done for the footer.
@@ -342,18 +366,41 @@ Customize the document appearance using one of the existing template:
 
 # Share it online
 ***
-Display your html online using github.
+Display your html online using [github](https://github.com). Follow these steps:
+
+- You need a [github account](https://github.com/join).
+- Name your `.rmd` file `index.rmd`. Knit it to have a `index.html` file.
+- Create a repository on github with your working folder.
+- On your github online repo go to *Settings* -> *GitHub Pages* -> *Source* -> *Master Branch* -> *Save*.
+- Wait a little, your `.html` file will be available at [username.github.io/repoName]()
+
+See more detailed instructions here.
 
 
 
 # Compile several in a website
 ***
+Explanation in the [R Markdown Websites](https://rmarkdown.rstudio.com/rmarkdown_websites.html) section of the R Markdown website. To run a basic example:
 
-
+- fork / download [this github repository](https://github.com/rstudio/rmarkdown-website-examples/tree/master/hello-website) locally.
+- Open R
+- load the rmarkdown library:
+```{r, eval=FALSE}
+library(rmarkdown)
+```
+- build the website doing
+```{r, eval=FALSE}
+rmarkdown::render_site()
+```
+- You now have a `_site` folder that contains an `index.html` file. Open it, it is your website.
 
 
 # Create template
 ***
+If you often use the same kind of customization you probably want to create your own `.rmd template`. A good starting point is the [Rstudio documentation](https://rmarkdown.rstudio.com/developer_document_templates.html). 
+
+This document is produced using my personal template: [epuRate](https://github.com/holtzy/epuRate). An easy solution to create your template can be to fork / download this repo and apply your own style instead of mine.
+
 
 
 
@@ -365,6 +412,11 @@ sessionInfo()
 ```
 
 
+# References
+***
+
+- The [R Markdown website](https://rmarkdown.rstudio.com)
+- [Yihui website](https://yihui.name/knitr/) (author of knitr)
 
 
 

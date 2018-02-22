@@ -323,9 +323,37 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 Possible to cache code.
 But better to use it with care. Personnaly use it at the end, just to make the document pretty.
 
-# Add a github link in the corner of your document
+
+
+# Add a github link in the corner of your document {#anchor1}
 ***
 Several solutions exist. I used the code provided in [this repo](https://github.com/tholman/github-corners). Made by [Tim Holman](http://tholman.com). Just paste the provided code in your `header.html`, like you have done for the footer.
+
+
+# Inside link
+***
+You can use internal links in R Markdown using anchors. For example, [this link](#anchor1) will bring you to the previous chapter. To do it:
+
+- Put an 'anchor' next to a title. This is how my `rmd` looks like:
+```{r, eval=FALSE}
+# Add a github link in the corner of your document {#anchor1}
+```
+
+- Put a link toward this anchor:
+```{r, eval=FALSE}
+For example, [this link](#anchor1) will bring
+```
+
+
+
+# URL linking to a specific section {#Anchor-URL-link}
+***
+The anchor described in the previous section can be called directly in the URL. This URL will bring you directly to this section:
+```{r, eval=FALSE}
+https://holtzy.github.io/Pimp-my-rmd/#Anchor-URL-link
+```
+
+
 
 
 

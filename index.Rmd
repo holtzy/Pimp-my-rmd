@@ -226,7 +226,34 @@ mpg %>%
 </div>
 
 
-# Use buttons for sub-chapters {.tabset .tabset-fade .tabset-pills}
+# Insert equations
+***
+Insert equation using Latex formating:
+
+$A = (\pi * \lambda \times r^{4}) / \alpha$
+
+Delimit Latex syntax with `$`
+```{r, eval=FALSE}
+$A = (\pi * \lambda \times r^{4}) / \alpha $
+```
+
+
+
+
+
+
+# 2 figures in 2 columns
+***
+```{r out.width=c('50%', '50%'), fig.show='hold'}
+boxplot(1:10)
+plot(rnorm(10))
+```
+
+
+
+
+
+# Use buttons or tabs for sub-chapters {.tabset .tabset-fade .tabset-pills}
 ***
 Save space in your document using buttons for sub chapters. Add this code at the end of your title:
 ```{r, eval=FALSE}

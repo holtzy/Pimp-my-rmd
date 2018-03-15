@@ -255,17 +255,29 @@ plot(rnorm(10))
 
 # Use buttons or tabs for sub-chapters {.tabset .tabset-fade .tabset-pills}
 ***
-Save space in your document using buttons for sub chapters. Add this code at the end of your title:
-```{r, eval=FALSE}
-# Use pills {.tabset .tabset-fade .tabset-pills}
-```
-
-Your subtitles will appear like that:
+Save space in your document using buttons or tabs for sub chapters. Add this code at the end of your title:
 
 ## First
+A first section
+
+Here is the code used to create this section:
+```{r, eval=FALSE}
+# Use buttons or tabs for sub-chapters {.tabset .tabset-fade .tabset-pills}
+***
+Save space in your document using buttons or tabs for sub chapters. Add this code at the end of your title:
+
+## First
+A first section
+
+## Second
+content of sub-chapter #2
+
+## Third
+content of sub-chapter #3
+```
 
 
-Note that I've custom the buttons using this CSS:
+Note that I've also custom the buttons using this CSS:
 ```{r, eval=FALSE}
 .btn {
     border-width: 0 0px 0px 0px;

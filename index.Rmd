@@ -1,5 +1,5 @@
 ---
-title: "A few tips for R Markdown"
+title: "Pimp my RMD: a few tips for R Markdown"
 author: "by [Yan Holtz](https://github.com/holtzy/) - `r format(Sys.time(), '%d %B %Y')`"
 output:
   epuRate::epurate:
@@ -15,12 +15,12 @@ library(rmarkdown)
   
 <br><br>
 
-> [R markdown](https://rmarkdown.rstudio.com) creates interactive reports from R code. This post provides a few tips to improve the appearance of output documents. In any case, the bible is the [Rstudio documentation](https://rmarkdown.rstudio.com/html_document_format.html).
+> [R markdown](https://rmarkdown.rstudio.com) creates interactive reports from [R](https://www.r-project.org) code. This post provides a few tips I use on a daily basis to improve the appearance of output documents. In any case, an unavoidable resource is the [Rstudio documentation](https://rmarkdown.rstudio.com/html_document_format.html).
 
 
 
 
-# Text formating
+# Text formating {#text-formatting}
 ***
 R markdown allows to easily format your text. You can add [links](www.r-graph-gallery.com), write in **bold** or *italic*. This is very well explained in the [Rstudio cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf).
 
@@ -31,7 +31,7 @@ R markdown allows to easily format your text. You can add [links](www.r-graph-ga
 
 
 
-# Horizontal lines
+# Horizontal lines {#horizontal-line}
 ***
 Add an horizontal line by adding 3 stars:
 ```{r, eval=FALSE}
@@ -42,9 +42,9 @@ Add an horizontal line by adding 3 stars:
 
 
 
-# Chapter auto numbering
+# Chapter auto numbering {#auto-numbering}
 ***
-Header of level 1, 2, 3 are set using #, ## and ###. You can auto number your chapters using this option the header:
+Header of level 1, 2, 3 are set using #, ## and ###. You can auto number your chapters using this option in the header:
 ```{r, eval=FALSE}
 ---
 title: "Your title"
@@ -62,7 +62,7 @@ output:
 
 
 
-# Skip a line
+# Skip a line {#skip-line}
 ***
 I really like to add spaces in my document to give it a more uncluttered look. This is done using the `<br>` command. This `.rmd` code:
 ```{r, eval=FALSE}
@@ -71,7 +71,7 @@ A first sentence
 A seconde sentence
 ```
 
-will give this `html`output
+will give this `html`output:
 
 ***
 
@@ -83,7 +83,7 @@ A seconde sentence
 
 
 
-# Center an image
+# Center an image {#center-image}
 ***
 To center an image, use this code:
 ```{r eval=FALSE}
@@ -101,7 +101,7 @@ Here is the result
 
 
 
-# Add footer or header
+# Add footer or header {#add-footer}
 ***
 You can add some html code at the beginning or at the end of your document. Here is the html code I've added at the end of this document:
 
@@ -143,7 +143,7 @@ Your footer should now look like this:
 
 
 
-# Add space before title
+# Add space before title {#add-space}
 ***
 I find it pleasant to have a bit of space before starting a new chapter. You can use a `<br>` before each header. A more convenient way is to add some margin in your CSS. Create a `style.css` file:
 ```{r, eval=FALSE}
@@ -176,7 +176,7 @@ The document you are reading uses this `css`. See the separation between chapter
 
 
 
-# Add caption to your figures
+# Add caption to your figures {#add-caption}
 ***
 Specify the caption of your figure in the chunk header. Example:
 ```{r, eval=FALSE}
@@ -195,7 +195,7 @@ mpg %>%
 
 
 
-# Custom caption
+# Custom caption {#custom-caption}
 ***
 Change the black default caption using CSS. Adding this code in your `style.css` file. 
 ```{r, eval=FALSE}
@@ -226,7 +226,7 @@ mpg %>%
 </div>
 
 
-# Insert equations
+# Insert equations {#insert-equation}
 ***
 Insert equation using Latex formating:
 
@@ -242,9 +242,21 @@ $A = (\pi * \lambda \times r^{4}) / \alpha $
 
 
 
-# 2 figures in 2 columns
+# 2 figures in 2 columns {#2columns}
 ***
-```{r out.width=c('50%', '50%'), fig.show='hold'}
+You can display 2 plots one beside each other. Add `out.width=c('50%', '50%'), fig.show='hold'` to your chunk header. Something like:
+
+```{r, eval=FALSE}
+``{r out.width=c('50%', '50%'), fig.show='hold'}
+boxplot(1:10)
+plot(rnorm(10))
+`
+```
+
+
+
+
+```{r out.width=c('50%', '50%'), fig.show='hold', echo=FALSE}
 boxplot(1:10)
 plot(rnorm(10))
 ```
@@ -253,12 +265,16 @@ plot(rnorm(10))
 
 
 
-# Use buttons or tabs for sub-chapters {.tabset .tabset-fade .tabset-pills}
+# Use buttons or tabs for sub-chapters {#buttons .tabset .tabset-fade .tabset-pills}
 ***
-Save space in your document using buttons or tabs for sub chapters. Add this code at the end of your title:
+Save space in your document using buttons or tabs for sub chapters. Result can look like this:
 
 ## First
-A first section
+content of sub-chapter #1
+
+<br><br>
+
+***
 
 Here is the code used to create this section:
 ```{r, eval=FALSE}
@@ -299,9 +315,9 @@ content of sub-chapter #3
 
 
 
-# Use DT for tables
+# Use DT for tables {#DT}
 ***
-The DT library is my favourite option to display tables in your document. It allows to:
+The [DT library](https://rstudio.github.io/DT/) is my favourite option to display tables in your document. It allows to:
 
 - Show only a few line
 - Have a clean appearance
@@ -309,6 +325,7 @@ The DT library is my favourite option to display tables in your document. It all
 - Add filters to each column
 - And much more
 
+Here is an example with the options I use most of the time:
 ```{r}
 library(DT)
 datatable(mtcars, rownames = FALSE, filter="top", options = list(pageLength = 5, scrollX=T) )
@@ -317,7 +334,7 @@ datatable(mtcars, rownames = FALSE, filter="top", options = list(pageLength = 5,
 
 
 
-# Hide code
+# Hide code {#hide-code}
 ***
 If you share your code with somebody who's more focus on results than code, or if your code chunks are very long, you probably want to hide the code, but still allow the reader to consult it if necessary. This is possible by modifying the YAML header of your document:
 ```{r, eval=FALSE}
@@ -326,9 +343,11 @@ output:
     code_folding: "hide"
 ```
 
+Yyour code chunks will be hidden in the output, but a small 'code' button will be available to display it if necessary.
 
 
-# Highlight a piece of text
+
+# Highlight a piece of text {#highlight}
 ***
 You can apply some `css` to a specific part of your document. Here is an example where I change the background color of a small part. Handy to highlight conclusions at the end of your document.
 
@@ -358,34 +377,45 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </div>
 
 
-# Cache code
-Possible to cache code.
-But better to use it with care. Personnaly use it at the end, just to make the document pretty.
 
 
-
-# Add a github link in the corner of your document {#anchor1}
+# Cache code {#cache}
 ***
-Several solutions exist. I used the code provided in [this repo](https://github.com/tholman/github-corners). Made by [Tim Holman](http://tholman.com). Just paste the provided code in your `header.html`, like you have done for the footer.
+It is possible to cache a specific chunk adding `cache=TRUE` in its header. You can also cash the whole document adding `knitr::opts_chunk$set(cache=TRUE)` in a chunk at the begining of the document.  
+<br>
+Use this option with care, I strongly advise to read [this document](https://yihui.name/knitr/demo/cache/) by Yihui Xie on this topic.
 
 
-# Inside link
+
+# Add a github link in the corner of your document {#github-link}
 ***
-You can use internal links in R Markdown using anchors. For example, [this link](#anchor1) will bring you to the previous chapter. To do it:
+Several solutions exist. I used the code provided in [this repo](https://github.com/tholman/github-corners). Made by [Tim Holman](http://tholman.com). Just paste the provided code in your `header.html`, like you have done to add a footer.
 
-- Put an 'anchor' next to a title. This is how my `rmd` looks like:
+<br>
+For example [this is the code I used](https://raw.githubusercontent.com/holtzy/epuRate/master/inst/rmarkdown/templates/epurate/resources/header.html) for this document, and the results looks like that:
+
+![](img_github.png)
+
+
+
+
+# Internal link {#link}
+***
+You can use internal links in R Markdown using anchors. For example, [this link](#github-link) will bring you to the previous chapter. To do it:
+
+- 1 - Put an 'anchor' next to a title. This is how the previous section title looks like:
 ```{r, eval=FALSE}
-# Add a github link in the corner of your document {#anchor1}
+# Add a github link in the corner of your document {#github-link}
 ```
 
-- Put a link toward this anchor:
+- 2 - Put a link toward this anchor:
 ```{r, eval=FALSE}
-For example, [this link](#anchor1) will bring
+For example, [this link](#github-link) will bring ...
 ```
 
 
 
-# URL linking to a specific section {#Anchor-URL-link}
+# URL linking to a specific section {#Anchor-URL-link} 
 ***
 The anchor described in the previous section can be called directly in the URL. This URL will bring you directly to this section:
 ```{r, eval=FALSE}
@@ -396,9 +426,9 @@ https://holtzy.github.io/Pimp-my-rmd/#Anchor-URL-link
 
 
 
-# Use interactive graphics.
+# Use interactive graphics {#interactive}
 ***
-R allows to build any type of interactive graphic. My favourite library is plotly that will turn any of your ggplot2 graphic interactive in one supplementary line of code. Try to hover points, to select a zone, to click on the legend.
+R allows to build any type of [interactive graphic](https://www.r-graph-gallery.com/interactive-charts/). My favourite library is [plotly](https://www.r-graph-gallery.com/get-the-best-from-ggplotly/) that will turn any of your ggplot2 graphic interactive in one supplementary line of code. Try to hover points, to select a zone, to click on the legend.
 <br><br>
 ```{r, message=FALSE, warning=FALSE, fig.align="center"}
 library(ggplot2)
@@ -417,12 +447,18 @@ ggplotly(p)
 
 
 
-# Use a template
+# Use a template {#template}
 ***
-Customize the document appearance using one of the existing template:
+Customize the document appearance using a template. Two packages offer several templates:
 
--
--
+- [prettydoc](http://yixuan.cos.name/prettydoc/) by [Yixuan Qiu](https://github.com/yixuan)
+- [rmdformats](https://github.com/juba/rmdformats) by [Julien Barnier](https://twitter.com/lapply). It provides several templates, like `readthedown`:
+
+<br>
+
+<center>
+![](readthedown.png)
+</center>
 
 
 
@@ -431,7 +467,7 @@ Customize the document appearance using one of the existing template:
 
 
 
-# Share it online
+# Share it online {#online}
 ***
 Display your html online using [github](https://github.com). Follow these steps:
 
@@ -441,13 +477,16 @@ Display your html online using [github](https://github.com). Follow these steps:
 - On your github online repo go to *Settings* -> *GitHub Pages* -> *Source* -> *Master Branch* -> *Save*.
 - Wait a little, your `.html` file will be available at [username.github.io/repoName]()
 
-See more detailed instructions here.
+An attempt to illustrate it with a few screenshots:
+
+<center>
+![](instruction.png)
+</center>
 
 
-
-# Compile several in a website
+# Compile several in a website {#website}
 ***
-Explanation in the [R Markdown Websites](https://rmarkdown.rstudio.com/rmarkdown_websites.html) section of the R Markdown website. To run a basic example:
+Explanation in the [R Markdown Websites](https://rmarkdown.rstudio.com/rmarkdown_websites.html) section of the R Markdown documentation. Note that this website is render using this technic. To run a basic example:
 
 - fork / download [this github repository](https://github.com/rstudio/rmarkdown-website-examples/tree/master/hello-website) locally.
 - Open R
@@ -459,19 +498,22 @@ library(rmarkdown)
 ```{r, eval=FALSE}
 rmarkdown::render_site()
 ```
-- You now have a `_site` folder that contains an `index.html` file. Open it, it is your website.
+- You now have a `_site` folder that contains an `index.html` file. Open it, it is your website. You can host it on github like explained above.
+
+Note that you can go further using the [blogdown package](https://github.com/rstudio/blogdown) to generate static websites based on R Markdown and [Hugo](https://gohugo.io). This allows to build awesome websites only with R. It is used by a huge number of R blogs now.
 
 
-# Create template
+
+
+# Create template {#template-creation}
 ***
 If you often use the same kind of customization you probably want to create your own `.rmd template`. A good starting point is the [Rstudio documentation](https://rmarkdown.rstudio.com/developer_document_templates.html). 
 
-This document is produced using my personal template: [epuRate](https://github.com/holtzy/epuRate). An easy solution to create your template can be to fork / download this repo and apply your own style instead of mine.
+This document is produced using my personal template: [epuRate](https://github.com/holtzy/epuRate). I just custom a bit the CSS, added an header and a footer, and created a skeleton with tips I often use. An easy solution to create your template can be to fork / download this repo and apply your own style instead of mine.
 
 
 
-
-# Add a session info
+# Add a session info {#session}
 ***
 It is a good practice to add a session info at the end of your document. It will increase reproducibility and costs only one line of code
 ```{r}
@@ -486,8 +528,11 @@ sessionInfo()
 - [Yihui website](https://yihui.name/knitr/) (author of knitr)
 
 
+# Feedback
+***
+This document provides a few tips I often use in my documents. I hope it can help you. If you know any other tip I should add, please send me an email to `paste("yan.holtz.data", "gmail.com", sep=""")`, or suggest it via the [associated github repository](https://github.com/holtzy/Pimp-my-rmd).
 
-
+This page is linked with [the R graph gallery](www.r-graph-gallery.com) and you can also reach me on [twitter](https://twitter.com/r_graph_gallery?lang=en)! 
 
 
 

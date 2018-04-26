@@ -343,7 +343,7 @@ output:
     code_folding: "hide"
 ```
 
-Yyour code chunks will be hidden in the output, but a small 'code' button will be available to display it if necessary.
+Your code chunks will be hidden in the output, but a small 'code' button will be available to display it if necessary.
 
 
 
@@ -447,6 +447,18 @@ ggplotly(p)
 
 
 
+# Use a theme {#theme}
+***
+You can use any of the [bootswatch theme](https://bootswatch.com) to automatically custom the font and general appearance of your document. You can also control the syntax highlighting style. See the possibilty here. Here is how to call these options in the YAML header:
+```{r, eval=FALSE}
+title: "your title"
+output:
+  html_document:
+    theme: sandstone
+    highlight: tango
+```
+
+
 # Use a template {#template}
 ***
 Customize the document appearance using a template. Two packages offer several templates:
@@ -530,7 +542,7 @@ sessionInfo()
 
 # Feedback
 ***
-This document provides a few tips I often use in my documents. I hope it can help you. If you know any other tip I should add, please send me an email to `paste("yan.holtz.data", "gmail.com", sep=""")`, or suggest it via the [associated github repository](https://github.com/holtzy/Pimp-my-rmd).
+This document provides a few tips I often use in my documents. I hope it can help. If you know any other tip I should add, please send me an email to `paste("yan.holtz.data", "gmail.com", sep=""")`, or suggest it via the [associated github repository](https://github.com/holtzy/Pimp-my-rmd).
 
 This page is linked with [the R graph gallery](www.r-graph-gallery.com) and you can also reach me on [twitter](https://twitter.com/r_graph_gallery?lang=en)! 
 

@@ -378,6 +378,14 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 
 
 
+# Use parallax {#parallax}
+***
+Since R Markdown can output an html document, it is possible to apply whatever techniques used in common website. It is thus possible to set a header with a background image in parallax. See an [example online here](https://holtzy.github.io/R-Markdown-Parallax/). Here is a glimpse of how it looks like:
+
+![gif](demo.gif)
+
+You need to custom the `css` and the `header.html` files of your document. See the code provided in the [corresponding github repository](https://github.com/holtzy/R-Markdown-Parallax).
+
 
 # Cache code {#cache}
 ***

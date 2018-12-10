@@ -1,11 +1,28 @@
 ---
 title: "Pimp my RMD: a few tips for R Markdown"
 author: "by [Yan Holtz](https://github.com/holtzy/) - `r format(Sys.time(), '%d %B %Y')`"
+mail: "yan.holtz.data@gmail.com"
+linkedin: "yan-holtz-2477534a"
+twitter: "r_graph_gallery"
+github: "holtzy"
+home: "www.yan-holtz.com"
+logo: "logo_gallery.png"
 output:
   epuRate::epurate:
-    toc: FALSE
+    toc: TRUE
+    number_sections: FALSE
     code_folding: "show"
 ---
+
+<style>
+#TOC {
+  top: 1%;
+  opacity: 0.5;
+}
+#TOC:hover {
+  opacity: 1;
+}
+</style>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -98,10 +115,20 @@ Here is the result
 </center>
 
 
+# White space around img
+***
+If you're struggling with to much white space around your image, try to play with the `fig.asp` argument. Here I used `fig.asp=0.50`.
+```{r fig.width=3,fig.height=3,fig.align='center',cache=TRUE,fig.cap="Lovely Kangaroo from the Mornington Peninsula.",fig.asp=0.50}
+library(png)
+library(grid)
+img <- readPNG("kan.png")
+grid.raster(img)
+```
+Note: thanks to [Anna Quaglieri](https://twitter.com/annaquagli) for this suggestion.
 
 
 
-# Add footer or header {#add-footer}
+# Footer and header {#add-footer}
 ***
 You can add some html code at the beginning or at the end of your document. Here is the html code I've added at the end of this document:
 
@@ -143,7 +170,7 @@ Your footer should now look like this:
 
 
 
-# Add space before title {#add-space}
+# Space before title {#add-space}
 ***
 I find it pleasant to have a bit of space before starting a new chapter. You can use a `<br>` before each header. A more convenient way is to add some margin in your CSS. Create a `style.css` file:
 ```{r, eval=FALSE}
@@ -176,7 +203,7 @@ The document you are reading uses this `css`. See the separation between chapter
 
 
 
-# Add caption to your figures {#add-caption}
+# Figures caption {#add-caption}
 ***
 Specify the caption of your figure in the chunk header. Example:
 ```{r, eval=FALSE}
@@ -226,7 +253,7 @@ mpg %>%
 </div>
 
 
-# Insert equations {#insert-equation}
+# Equations {#insert-equation}
 ***
 Insert equation using Latex formating:
 
@@ -262,7 +289,7 @@ plot(rnorm(10))
 
 
 
-# Add a section with several columns. {#columnsection}
+# Several columns {#columnsection}
 ***
 
 
@@ -308,7 +335,7 @@ ggplot( mtcars, aes(x=mpg)) + geom_histogram(fill="skyblue", alpha=0.5) + theme_
 
 
 
-# Use buttons or tabs for sub-chapters {#buttons .tabset .tabset-fade .tabset-pills}
+# Tabs for sub-chapters {#buttons .tabset .tabset-fade .tabset-pills}
 ***
 Save space in your document using buttons or tabs for sub chapters. Result can look like this:
 
@@ -369,7 +396,7 @@ The [DT library](https://rstudio.github.io/DT/) is my favourite option to displa
 - And much more
 
 Here is an example with the options I use most of the time:
-```{r}
+```{r, warning=FALSE}
 library(DT)
 datatable(mtcars, rownames = FALSE, filter="top", options = list(pageLength = 5, scrollX=T) )
 ```
@@ -421,7 +448,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 
 
 
-# Use parallax {#parallax}
+# Parallax {#parallax}
 ***
 Since R Markdown can output an html document, it is possible to apply whatever techniques used in common website. It is thus possible to set a header with a background image in parallax. See an [example online here](https://holtzy.github.io/R-Markdown-Parallax/). Here is a glimpse of how it looks like:
 
@@ -438,7 +465,7 @@ Use this option with care, I strongly advise to read [this document](https://yih
 
 
 
-# Add a github link in the corner of your document {#github-link}
+# Github link in corner {#github-link}
 ***
 Several solutions exist. I used the code provided in [this repo](https://github.com/tholman/github-corners). Made by [Tim Holman](http://tholman.com). Just paste the provided code in your `header.html`, like you have done to add a footer.
 
@@ -466,7 +493,7 @@ For example, [this link](#github-link) will bring ...
 
 
 
-# URL linking to a specific section {#Anchor-URL-link} 
+# Hyperlink to a section {#Anchor-URL-link} 
 ***
 The anchor described in the previous section can be called directly in the URL. This URL will bring you directly to this section:
 ```{r, eval=FALSE}
@@ -477,7 +504,7 @@ https://holtzy.github.io/Pimp-my-rmd/#Anchor-URL-link
 
 
 
-# Use interactive graphics {#interactive}
+# Interactive graphics {#interactive}
 ***
 R allows to build any type of [interactive graphic](https://www.r-graph-gallery.com/interactive-charts/). My favourite library is [plotly](https://www.r-graph-gallery.com/get-the-best-from-ggplotly/) that will turn any of your ggplot2 graphic interactive in one supplementary line of code. Try to hover points, to select a zone, to click on the legend.
 <br><br>
@@ -498,7 +525,7 @@ ggplotly(p)
 
 
 
-# Use a theme {#theme}
+# Theme {#theme}
 ***
 You can use any of the [bootswatch theme](https://bootswatch.com) to automatically custom the font and general appearance of your document. You can also control the syntax highlighting style. See the possibilty here. Here is how to call these options in the YAML header:
 ```{r, eval=FALSE}
@@ -510,7 +537,7 @@ output:
 ```
 
 
-# Use a template {#template}
+# Template {#template}
 ***
 Customize the document appearance using a template. Two packages offer several templates:
 
@@ -547,7 +574,7 @@ An attempt to illustrate it with a few screenshots:
 </center>
 
 
-# Compile several in a website {#website}
+# Compile in a website {#website}
 ***
 Explanation in the [R Markdown Websites](https://rmarkdown.rstudio.com/rmarkdown_websites.html) section of the R Markdown documentation. Note that this website is render using this technic. To run a basic example:
 
@@ -576,7 +603,7 @@ This document is produced using my personal template: [epuRate](https://github.c
 
 
 
-# Add a session info {#session}
+# Session info {#session}
 ***
 It is a good practice to add a session info at the end of your document. It will increase reproducibility and costs only one line of code
 ```{r}
@@ -593,7 +620,7 @@ sessionInfo()
 
 # Feedback
 ***
-This document provides a few tips I often use in my documents. I hope it can help. If you know any other tip I should add, please send me an email to `paste("yan.holtz.data", "gmail.com", sep=""")`, or suggest it via the [associated github repository](https://github.com/holtzy/Pimp-my-rmd).
+This document provides a few tips I often use in my documents. I hope it can help. If you know any other tip I should add, please send me an email to **yan.holtz.data@gmail.com**, or suggest it via the [associated github repository](https://github.com/holtzy/Pimp-my-rmd).
 
 This page is linked with [the R graph gallery](www.r-graph-gallery.com) and you can also reach me on [twitter](https://twitter.com/r_graph_gallery?lang=en)! 
 

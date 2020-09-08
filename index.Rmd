@@ -622,7 +622,7 @@ sessionInfo()
 ***
 This document provides a few tips I often use in my documents. I hope it can help. If you know any other tip I should add, please send me an email to **yan.holtz.data@gmail.com**, or suggest it via the [associated github repository](https://github.com/holtzy/Pimp-my-rmd).
 
-This page is linked with [the R graph gallery](www.r-graph-gallery.com) and you can also reach me on [twitter](https://twitter.com/r_graph_gallery?lang=en)! 
+This page is linked with [the R graph gallery](https://www.r-graph-gallery.com/) and you can also reach me on [twitter](https://twitter.com/r_graph_gallery?lang=en)! 
 
 
 

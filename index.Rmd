@@ -273,12 +273,12 @@ $A = (\pi * \lambda \times r^{4}) / \alpha $
 ***
 You can display 2 plots one beside each other. Add `out.width=c('50%', '50%'), fig.show='hold'` to your chunk header. Something like:
 
-```{r, eval=FALSE}
-``{r out.width=c('50%', '50%'), fig.show='hold'}
+````markdown
+```{r out.width=c('50%', '50%'), fig.show='hold'}`r ''`
 boxplot(1:10)
 plot(rnorm(10))
-`
 ```
+````
 
 ```{r out.width=c('50%', '50%'), fig.show='hold', echo=FALSE}
 boxplot(1:10)
